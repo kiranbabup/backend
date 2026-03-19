@@ -7,15 +7,10 @@ const getJwtCookieOptions = (req) => {
     (typeof req.headers?.["x-forwarded-proto"] === "string" &&
       req.headers["x-forwarded-proto"].includes("https"));
 
-  // For localhost + different ports in development, we still need cross-site cookie
-  // support for auth via axios withCredentials.
-  const sameSite = isSecure ? "none" : "none";
-  const secure = isSecure;
-
   return {
     httpOnly: true,
-    sameSite,
-    secure,
+    sameSite: "none",
+    secure: isSecure, // true in production HTTPS, false on local HTTP
     path: "/",
   };
 };

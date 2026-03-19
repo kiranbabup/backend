@@ -27,15 +27,14 @@ async function main() {
 app.use(express.json());
 app.use(cookieParser());
 
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://mediastack-1.onrender.com", "https://media-stack-h2ve.vercel.app", "http://46.202.162.17:9000/"];
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://mediastack-1.onrender.com", "https://media-stack-h2ve.vercel.app", "http://46.202.162.17:9000", "https://avanthisnbapi.invtechnologies.in"];
 
 app.use(cors({
   origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps or curl requests)
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true,
@@ -53,7 +52,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "http://localhost:5174", "https://mediastack-1.onrender.com", "https://media-stack-h2ve.vercel.app", "http://46.202.162.17:9000/"],
+    origin: ["http://localhost:5173", "http://localhost:5174", "https://mediastack-1.onrender.com", "https://media-stack-h2ve.vercel.app", "http://46.202.162.17:9000", "https://avanthisnbapi.invtechnologies.in"],
     credentials: true,
   },
 });
