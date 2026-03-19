@@ -13,7 +13,7 @@ const textRoutes = require("./router/text.js");
 
 const app = express();
 app.set('trust proxy', 1); // Trust the first proxy
-const port = 9000;
+const port = process.env.PORT || 9000;
 
 async function main() {
   try {
@@ -27,7 +27,7 @@ async function main() {
 app.use(express.json());
 app.use(cookieParser());
 
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://mediastack-1.onrender.com", "https://media-stack-h2ve.vercel.app"];
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://mediastack-1.onrender.com", "https://media-stack-h2ve.vercel.app", "http://46.202.162.17:9000/"];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -53,7 +53,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "http://localhost:5174", "https://mediastack-1.onrender.com", "https://media-stack-h2ve.vercel.app"],
+    origin: ["http://localhost:5173", "http://localhost:5174", "https://mediastack-1.onrender.com", "https://media-stack-h2ve.vercel.app", "http://46.202.162.17:9000/"],
     credentials: true,
   },
 });
