@@ -27,7 +27,7 @@ async function main() {
 app.use(express.json());
 app.use(cookieParser());
 
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://mediastack-1.onrender.com", "https://media-stack-h2ve.vercel.app", "http://46.202.162.17:9000", "https://avanthisnbapi.invtechnologies.in"];
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://mediastack-1.onrender.com", "https://media-stack-h2ve.vercel.app", "http://46.202.162.17:9000", "https://avanthisnbapi.invtechnologies.in", "https://avanthisnb.invtechnologies.in"];
 
 app.use(cors({
   origin: function (origin, callback) {
